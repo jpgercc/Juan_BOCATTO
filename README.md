@@ -1,6 +1,6 @@
 # BOCATTO
 
-<h2>A FAZER<h2>
+<h2>A FAZER</h2>
 Criar menu sem os preços, só foto e descrição
 
 PRODUTOS:
@@ -15,5 +15,6 @@ RETIRAR RESERVAS
 'PREÇO DIFERENCIADO PARA EVENTOS'
 
 CONTEXTO:
-- [ ] Incluir contexto passado via whatsapp no dia 12/11/2025
+- [ ]  Incluir contexto passado via whatsapp no dia 12/11/2025
+
 
