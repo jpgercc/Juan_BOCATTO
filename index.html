@@ -5,198 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bocatto - Confeitaria de Luxo</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
     <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 </head>
 <body class="body">
-    <!-- Navigation -->
-    <nav id="navbar" class="nav">
+    <!-- Header with Navigation -->
+    <header id="navbar" class="nav">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <img src="./assets/LOGO-WIDE-BLK-MINIMALIST.png" alt="Bocatto Logo">
                 <span class="logo-reg">&reg;</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#collections">NATAL 2025</a></li>
-                <li><a href="produtos.html">MENU</a></li>
-                <li><a href="#events">EVENTOS</a></li>
-                <li><a href="#events">SOBRE NOS</a></li>
-            </ul>
+            <nav class="nav-links-wrapper">
+                <ul class="nav-links">
+                    <li><a href="produtos.html">MENU</a></li>
+                    <li><a href="#servicos">SERVIÇOS</a></li>
+                    <li><a href="eventos.html">EVENTOS</a></li>
+                    <li><a href="#sobrenos">SOBRE NÓS</a></li>
+                </ul>
+            </nav>
             <div class="nav-icons">
                 <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
-                <button class="menu-toggle" onclick="toggleMenu()">
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                     <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 </button>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="#collections" onclick="toggleMenu()">COLECOES</a></li>
             <li><a href="produtos.html" onclick="toggleMenu()">MENU</a></li>
-            <li><a href="#salon" onclick="toggleMenu()">SALAO DE CHA</a></li>
-            <li><a href="#events" onclick="toggleMenu()">EVENTOS</a></li>
-            <li><a href="#maison" onclick="toggleMenu()">MAISON</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">SERVIÇOS</a></li>
+            <li><a href="eventos.html" onclick="toggleMenu()">EVENTOS</a></li>
+            <li><a href="#sobrenos" onclick="toggleMenu()">SOBRE NÓS</a></li>
         </ul>
     </div>
 
-    <!-- Hero Carousel -->
-    <section class="hero">
-        <div class="hero-slide active">
-            <img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=1600&q=90" alt="Macarons">
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-slide">
-            <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=1600&q=90" alt="Pastries">
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-slide">
-            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1600&q=90" alt="Desserts">
-            <div class="hero-overlay"></div>
-        </div>
-        
-        <div class="hero-content">
-            <h1>A Arte da Confeitaria</h1>
-            <p>Desde 1986, criando um bocado momentos deliciosos</p>
-            <button class="btn-primary">DESCUBRA A COLEÇÃO</button>
-        </div>
-
-        <div class="carousel-indicators">
-            <button class="indicator active" onclick="goToSlide(0)"></button>
-            <button class="indicator" onclick="goToSlide(1)"></button>
-            <button class="indicator" onclick="goToSlide(2)"></button>
-        </div>
-    </section>
-
-    <!-- Collections Section -->
-    <section class="section" id="collections">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossas Criações</h2>
-                <div class="divider"></div>
-                <p>Cada criação é uma obra-prima, elaborada com ingredientes nobres e técnicas familiares.</p>
+    <main>
+        <!-- Hero Carousel -->
+        <section class="hero" aria-label="Hero carousel">
+            <div class="hero-slide active">
+                <img src="https://images.unsplash.com/photo-1587668178277-295251f900ce?w=1600&q=90" alt="Macarons">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=1600&q=90" alt="Pastries">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1600&q=90" alt="Desserts">
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <h1>A Arte da Confeitaria</h1>
+                <p>Desde 1986, criando um bocado momentos deliciosos</p>
+                <a href="produtos.html" class="btn-primary">DESCUBRA A COLEÇÃO</a>
             </div>
 
-            <div class="grid">
-                <div class="collection-card">
-                    <div class="collection-image">
-                        <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=800&q=90" alt="Macarons">
-                        <div class="collection-overlay">
-                            <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            <div class="carousel-indicators" role="tablist" aria-label="Carousel indicators">
+                <button class="indicator active" onclick="goToSlide(0)" role="tab" aria-selected="true"></button>
+                <button class="indicator" onclick="goToSlide(1)" role="tab" aria-selected="false"></button>
+                <button class="indicator" onclick="goToSlide(2)" role="tab" aria-selected="false"></button>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section class="section" id="menu">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nossas Criações</h2>
+                    <div class="divider"></div>
+                    <p>Cada criação é uma obra-prima, elaborada com ingredientes nobres e técnicas familiares.</p>
+                </div>
+
+                <div class="grid">
+                    <div class="collection-card">
+                        <div class="collection-image">
+                            <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=800&q=90" alt="Macarons">
+                            <div class="collection-overlay">
+                                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Macarons Signature</h3>
+                        <p>Sabores exclusivos em harmonia perfeita</p>
+                    </div>
+
+                    <div class="collection-card">
+                        <div class="collection-image">
+                            <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=800&q=90" alt="Chocolates">
+                            <div class="collection-overlay">
+                                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Chocolates Artesanais</h3>
+                        <p>Criações refinadas de chocolate belga</p>
+                    </div>
+
+                    <div class="collection-card">
+                        <div class="collection-image">
+                            <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=90" alt="Pâtisserie">
+                            <div class="collection-overlay">
+                                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Pâtisserie Française</h3>
+                        <p>Tradição em cada mordida</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section experience" id="salon">
+            <div class="container">
+                <div class="experience-grid">
+                    <div class="experience-image">
+                        <img src="./assets/LOGO-ROUND-BRONW.jpeg" alt="Bocatto Logo">
+                    </div>
+                    <div class="experience-content">
+                        <h2>A Experiência Bocatto</h2>
+                        <div class="divider" style="margin: 0 0 2rem 0;"></div>
+                        <p>Mais que uma confeitaria, Bocatto é um refúgio de gastronomia e elegância. Nosso salão de chá oferece uma experiência sensorial incomparável, onde cada detalhe foi pensado para encantar os paladares mais exigentes.</p>
+                        <p>Da decoração acolhedora às porcelanas finas, cada elemento celebra a nossa tradição familiar de criar momentos inesquecíveis.</p>
+                        <button class="btn-secondary">ENTRE EM CONTATO</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section services" id="servicos">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Serviços Exclusivos</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
                             </svg>
                         </div>
+                        <h3>Kits Tradicionais</h3>
+                        <p>Caixas personalizadas para celebrar momentos especiais com distinção</p>
                     </div>
-                    <h3>Macarons Signature</h3>
-                    <p>Sabores exclusivos em harmonia perfeita</p>
-                </div>
 
-                <div class="collection-card">
-                    <div class="collection-image">
-                        <img src="https://images.unsplash.com/photo-1511381939415-e44015466834?w=800&q=90" alt="Chocolates">
-                        <div class="collection-overlay">
-                            <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
                         </div>
+                        <h3>Tabela Diferenciada para Organizadores Eventos</h3>
+                        <p>Espaços elegantes para experiências gastronômicas inesquecíveis</p>
                     </div>
-                    <h3>Chocolates Artesanais</h3>
-                    <p>Criações refinadas de chocolate belga</p>
-                </div>
 
-                <div class="collection-card">
-                    <div class="collection-image">
-                        <img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=90" alt="Pâtisserie">
-                        <div class="collection-overlay">
-                            <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
                             </svg>
                         </div>
+                        <h3>Tele-entrega Diferenciada</h3>
+                        <p>Levamos a excelência Bocatto para o local de sua escolha</p>
                     </div>
-                    <h3>Pâtisserie Française</h3>
-                    <p>Tradição em cada mordida</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section class="section experience" id="salon">
-        <div class="container">
-            <div class="experience-grid">
-                <div class="experience-image">
-                    <!--IMAGEM ANTERIOR EXEMPLO: https://scontent.fpoa13-1.fna.fbcdn.net/v/t1.6435-9/89965610_3905676646117017_8556411908398252032_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Oxv1HlprfpkQ7kNvwHLp1ms&_nc_oc=AdnF3tJrmBotLb5QQQSiQU88TZLhugHcEROsY3rX5P3jI4oqKzORltyFBKXRQASFD0k&_nc_zt=23&_nc_ht=scontent.fpoa13-1.fna&_nc_gid=fZQE3HBu9cL2HEJpTwqbiw&oh=00_AfiqurmtRqE6vpSiq0o6wjWTwLHvge01FGWPJnSxHJPb4w&oe=693C582B-->
-                    <img src="./assets/LOGO-ROUND-BRONW.jpeg" alt="Logo">
-                </div>
-                <div class="experience-content">
-                    <h2>A Experiência Bocatto</h2>
-                    <div class="divider" style="margin: 0 0 2rem 0;"></div>
-                    <p>Mais que uma confeitaria, Bocatto é um refúgio de gastronomia e elegância. Nosso salão de chá oferece uma experiência sensorial incomparável, onde cada detalhe foi pensado para encantar os paladares mais exigentes.</p>
-                    <p>Da decoração acolhedora às porcelanas finas, cada elemento celebra a nossa tradição familiar de criar momentos inesquecíveis.</p>
-                    <button class="btn-secondary">ENTRE EM CONTATO</button>
+        <!-- Heritage Banner -->
+        <section class="heritage" id="sobrenos">
+            <img src="https://images.unsplash.com/photo-1597528662465-55ece5734101?w=1600&q=90" alt="Baker Table">
+            <div class="heritage-overlay">
+                <div class="heritage-content">
+                    <p>DESDE 1986</p>
+                    <h2>Tradição e Excelência</h2>
+                    <p>Bocatto representa o encontro entre tradição familiar e inovação contemporânea, mantendo viva a verdadeira arte da confeitaria.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section services" id="events">
-        <div class="container">
-            <div class="section-header">
-                <h2>Serviços Exclusivos</h2>
-                <div class="divider"></div>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
-                        </svg>
-                    </div>
-                    <h3>Kits Tradicionais</h3>
-                    <p>Caixas personalizadas para celebrar momentos especiais com distinção</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3>Tabela Diferenciada para Organizadores Eventos</h3>
-                    <p>Espaços elegantes para experiências gastronômicas inesquecíveis</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                        </svg>
-                    </div>
-                    <h3>Tele-entrega Diferenciada</h3>
-                    <p>Levamos a excelência Bocatto para o local de sua escolha</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Heritage Banner -->
-    <section class="heritage" id="maison">
-        <img src="https://images.unsplash.com/photo-1597528662465-55ece5734101?w=1600&q=90" alt="Baker Table">
-        <div class="heritage-overlay">
-            <div class="heritage-content">
-                <p>DESDE 1986</p>
-                <h2>Tradição e Excelência</h2>
-                <p>Bocatto representa o encontro entre tradição familiar e inovação contemporânea, mantendo viva a verdadeira arte da confeitaria.</p>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -237,56 +240,5 @@
             <p>© 2025 BOCATTO. Todos direitos reservados.</p>
         </div>
     </footer>
-
-    <script>
-        // Carousel functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const indicators = document.querySelectorAll('.indicator');
-
-        function showSlide(index) {
-            // Remove active from all
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(ind => ind.classList.remove('active'));
-            
-            // Add active to current
-            currentSlide = index;
-            slides[currentSlide].classList.add('active');
-            indicators[currentSlide].classList.add('active');
-        }
-
-        function goToSlide(index) {
-            showSlide(index);
-        }
-
-        function nextSlide() {
-            let next = (currentSlide + 1) % slides.length;
-            showSlide(next);
-        }
-
-        // Auto-advance carousel every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        function toggleMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('active');
-        }
-
-        // Initialize - make sure first slide is active
-        document.addEventListener('DOMContentLoaded', () => {
-            showSlide(0);
-        });
-    </script>
 </body>
 </html>

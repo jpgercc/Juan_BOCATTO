@@ -21,7 +21,7 @@ html {
     backdrop-filter: blur(10px);
     transition: all 0.5s ease;
 }
-nav.scrolled {
+.nav.scrolled {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 .nav-container {
@@ -149,6 +149,7 @@ nav.scrolled {
     opacity: 0.95;
 }
 .btn-primary {
+    text-decoration: none;
     background: rgba(255, 255, 255, 0.95);
     color: #881337;
     padding: 1rem 2.5rem;
