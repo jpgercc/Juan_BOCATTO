@@ -4,606 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bocatto - Confeitaria de Luxo</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            background: #fafaf9;
-            color: #292524;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            transition: all 0.5s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.875rem;
-            font-weight: 300;
-            letter-spacing: 0.3em;
-            color: #881337;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #57534e;
-            font-size: 0.875rem;
-            letter-spacing: 0.15em;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #9f1239;
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .cart-icon {
-            cursor: pointer;
-            width: 20px;
-            height: 20px;
-            stroke: #57534e;
-            transition: stroke 0.3s;
-        }
-
-        .cart-icon:hover {
-            stroke: #9f1239;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .menu-icon {
-            width: 24px;
-            height: 24px;
-            stroke: #292524;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            z-index: 1;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-            z-index: 2;
-        }
-
-        .hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent, rgba(0,0,0,0.5));
-        }
-
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            z-index: 100;
-            padding: 0 2rem;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 7vw, 4.5rem);
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-content p {
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-        }
-
-        .btn-primary {
-            background: rgba(255, 255, 255, 0.95);
-            color: #881337;
-            padding: 1rem 2.5rem;
-            border: none;
-            letter-spacing: 0.2em;
-            font-size: 0.875rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: white;
-            transform: scale(1.05);
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.75rem;
-            z-index: 100;
-        }
-
-        .indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .indicator.active {
-            width: 32px;
-            background: white;
-        }
-
-        /* Collections Section */
-        .section {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 300;
-            color: #881337;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .divider {
-            width: 96px;
-            height: 1px;
-            background: #fecdd3;
-            margin: 0 auto 1.5rem;
-        }
-
-        .section-header p {
-            font-size: 1.125rem;
-            font-weight: 300;
-            color: #78716c;
-            max-width: 768px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .collection-card {
-            cursor: pointer;
-        }
-
-        .collection-image {
-            position: relative;
-            aspect-ratio: 1;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-
-        .collection-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        .collection-card:hover .collection-image img {
-            transform: scale(1.1);
-        }
-
-        .collection-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-            opacity: 0;
-            transition: opacity 0.5s;
-            display: flex;
-            align-items: flex-end;
-            padding: 1.5rem;
-        }
-
-        .collection-card:hover .collection-overlay {
-            opacity: 1;
-        }
-
-        .arrow-icon {
-            width: 24px;
-            height: 24px;
-            stroke: white;
-        }
-
-        .collection-card h3 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: #881337;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .collection-card p {
-            font-weight: 300;
-            color: #78716c;
-        }
-
-        /* Experience Section */
-        .experience {
-            background: linear-gradient(135deg, #fff1f2 0%, #fafaf9 100%);
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .experience-image img {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .experience-content h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 300;
-            color: #881337;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-content p {
-            font-size: 1.125rem;
-            font-weight: 300;
-            color: #44403c;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #881337;
-            padding: 0.75rem 2.5rem;
-            border: 2px solid #881337;
-            letter-spacing: 0.2em;
-            font-size: 0.875rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background: #881337;
-            color: white;
-        }
-
-        /* Services Section */
-        .services {
-            background: white;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-        }
-
-        .service-card {
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: scale(1.05);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            border: 2px solid #fecdd3;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .service-card:hover .service-icon {
-            border-color: #881337;
-            background: #881337;
-        }
-
-        .service-icon svg {
-            width: 36px;
-            height: 36px;
-            stroke: #881337;
-            transition: stroke 0.3s;
-        }
-
-        .service-card:hover .service-icon svg {
-            stroke: white;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: #881337;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            font-weight: 300;
-            color: #78716c;
-            line-height: 1.7;
-        }
-
-        /* Heritage Banner */
-        .heritage {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-        }
-
-        .heritage img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .heritage-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .heritage-content {
-            text-align: center;
-            color: white;
-            max-width: 768px;
-        }
-
-        .heritage-content p:first-child {
-            font-size: 1.125rem;
-            font-weight: 300;
-            letter-spacing: 0.3em;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-        }
-
-        .heritage-content h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-        }
-
-        .heritage-content p:last-child {
-            font-size: 1.25rem;
-            font-weight: 300;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
-
-        /* Footer */
-        footer {
-            background: #1c1917;
-            color: white;
-            padding: 4rem 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            max-width: 1280px;
-            margin: 0 auto 3rem;
-        }
-
-        .footer-section h3 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 0.3em;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-section h4 {
-            font-size: 0.875rem;
-            letter-spacing: 0.2em;
-            color: #d6d3d1;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p {
-            font-weight: 300;
-            color: #a8a29e;
-            line-height: 1.7;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-section ul li a {
-            text-decoration: none;
-            color: #a8a29e;
-            font-weight: 300;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #44403c;
-            padding-top: 2rem;
-            text-align: center;
-            color: #78716c;
-            font-size: 0.875rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: white;
-            z-index: 999;
-            padding: 6rem 2rem;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            text-align: center;
-        }
-
-        .mobile-menu ul li {
-            margin-bottom: 2rem;
-        }
-
-        .mobile-menu ul li a {
-            text-decoration: none;
-            color: #57534e;
-            font-size: 1.125rem;
-            letter-spacing: 0.15em;
-            transition: color 0.3s;
-        }
-
-        .mobile-menu ul li a:hover {
-            color: #9f1239;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-image {
-                order: 1;
-            }
-
-            .experience-content {
-                order: 2;
-            }
-
-            .experience-image img {
-                height: 400px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="body">
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" class="nav">
         <div class="nav-container">
-            <div class="logo">BOCATTO</div>
+            <a href="index.html" class="logo">
+                <img src="./assets/LOGO-WIDE-BLK-MINIMALIST.png" alt="Bocatto Logo">
+                <span class="logo-reg">&reg;</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#collections">NATAL 2025</a></li>
-                <li><a href="#boutique">MENU</a></li>
+                <li><a href="produtos.html">MENU</a></li>
                 <li><a href="#events">EVENTOS</a></li>
                 <li><a href="#events">SOBRE NOS</a></li>
             </ul>
@@ -623,9 +36,9 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="#collections" onclick="toggleMenu()">COLEÇÕES</a></li>
-            <li><a href="#boutique" onclick="toggleMenu()">BOUTIQUE</a></li>
-            <li><a href="#salon" onclick="toggleMenu()">SALÃO DE CHÁ</a></li>
+            <li><a href="#collections" onclick="toggleMenu()">COLECOES</a></li>
+            <li><a href="produtos.html" onclick="toggleMenu()">MENU</a></li>
+            <li><a href="#salon" onclick="toggleMenu()">SALAO DE CHA</a></li>
             <li><a href="#events" onclick="toggleMenu()">EVENTOS</a></li>
             <li><a href="#maison" onclick="toggleMenu()">MAISON</a></li>
         </ul>
@@ -648,8 +61,8 @@
         
         <div class="hero-content">
             <h1>A Arte da Confeitaria</h1>
-            <p>Desde 2015, criando um bocado momentos deliciosos</p>
-            <button class="btn-primary">DESCOBRIR A COLEÇÃO</button>
+            <p>Desde 1986, criando um bocado momentos deliciosos</p>
+            <button class="btn-primary">DESCUBRA A COLEÇÃO</button>
         </div>
 
         <div class="carousel-indicators">
@@ -716,14 +129,15 @@
         <div class="container">
             <div class="experience-grid">
                 <div class="experience-image">
-                    <img src="https://scontent.fpoa13-1.fna.fbcdn.net/v/t1.6435-9/89965610_3905676646117017_8556411908398252032_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Oxv1HlprfpkQ7kNvwHLp1ms&_nc_oc=AdnF3tJrmBotLb5QQQSiQU88TZLhugHcEROsY3rX5P3jI4oqKzORltyFBKXRQASFD0k&_nc_zt=23&_nc_ht=scontent.fpoa13-1.fna&_nc_gid=fZQE3HBu9cL2HEJpTwqbiw&oh=00_AfiqurmtRqE6vpSiq0o6wjWTwLHvge01FGWPJnSxHJPb4w&oe=693C582B" alt="Interior">
+                    <!--IMAGEM ANTERIOR EXEMPLO: https://scontent.fpoa13-1.fna.fbcdn.net/v/t1.6435-9/89965610_3905676646117017_8556411908398252032_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Oxv1HlprfpkQ7kNvwHLp1ms&_nc_oc=AdnF3tJrmBotLb5QQQSiQU88TZLhugHcEROsY3rX5P3jI4oqKzORltyFBKXRQASFD0k&_nc_zt=23&_nc_ht=scontent.fpoa13-1.fna&_nc_gid=fZQE3HBu9cL2HEJpTwqbiw&oh=00_AfiqurmtRqE6vpSiq0o6wjWTwLHvge01FGWPJnSxHJPb4w&oe=693C582B-->
+                    <img src="./assets/LOGO-ROUND-BRONW.jpeg" alt="Logo">
                 </div>
                 <div class="experience-content">
                     <h2>A Experiência Bocatto</h2>
                     <div class="divider" style="margin: 0 0 2rem 0;"></div>
                     <p>Mais que uma confeitaria, Bocatto é um refúgio de gastronomia e elegância. Nosso salão de chá oferece uma experiência sensorial incomparável, onde cada detalhe foi pensado para encantar os paladares mais exigentes.</p>
                     <p>Da decoração acolhedora às porcelanas finas, cada elemento celebra a nossa tradição familiar de criar momentos inesquecíveis.</p>
-                    <button class="btn-secondary">RESERVAR MESA</button>
+                    <button class="btn-secondary">ENTRE EM CONTATO</button>
                 </div>
             </div>
         </div>
@@ -776,7 +190,7 @@
         <img src="https://images.unsplash.com/photo-1597528662465-55ece5734101?w=1600&q=90" alt="Baker Table">
         <div class="heritage-overlay">
             <div class="heritage-content">
-                <p>DESDE 2016</p>
+                <p>DESDE 1986</p>
                 <h2>Tradição e Excelência</h2>
                 <p>Bocatto representa o encontro entre tradição familiar e inovação contemporânea, mantendo viva a verdadeira arte da confeitaria.</p>
             </div>
@@ -791,7 +205,7 @@
                 <p>A arte e a tradição da confeitaria.</p>
             </div>
             <div class="footer-section">
-                <h4>BOUTIQUE</h4>
+                <h4>MENU</h4>
                 <ul>
                     <li><a href="#">Macarons</a></li>
                     <li><a href="#">Chocolates</a></li>
@@ -811,10 +225,10 @@
             <div class="footer-section">
                 <h4>CONTACTO</h4>
                 <ul>
-                    <li>Rua da Elegância, 125</li>
-                    <li>Porto Alegre - RS</li>
-                    <li>+55 51 3333-5555</li>
-                    <li>contact@bocatto.com</li>
+                    <li>Rua Conde de Porto Alegre, 376</li>
+                    <li>Santana do Livramento - RS</li>
+                    <li>55 3242-1628</li>
+                    <li>bocattoconfeitaria@gmail.com</li>
                 </ul>
             </div>
         </div>
@@ -873,3 +287,5 @@
             showSlide(0);
         });
     </script>
+</body>
+</html>
