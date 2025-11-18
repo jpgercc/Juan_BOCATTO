@@ -473,7 +473,7 @@ footer {
     inset: 0;
     background: white;
     z-index: 999;
-    padding: 6rem 2rem;
+    padding: 8rem 2rem;
 }
 .mobile-menu.active {
     display: block;
