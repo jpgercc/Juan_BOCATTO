@@ -427,7 +427,7 @@ html {
     text-align: center;
     color: white;
     z-index: 100;
-    margin-top: 5rem;
+    margin-top: 4.5rem;
 }
 .hero-content h1 {
     font-size: clamp(2.5rem, 7vw, 4.5rem);
