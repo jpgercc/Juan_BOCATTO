@@ -1,7 +1,7 @@
 # BOCATTO
 
 <h2>A FAZER</h2>
-
+- [ ] ICONE precisa aparecer em mobile
 - [x] ADICIONAR HORARIO DE FUNCIONAMENTO NO FOOTER: SEG A SAB: 09:30 AS 12:00 14:30 AS 18:30
 - [x] Criar arquivo scrips.js
 - [x] Criar função de adicionar produtos a sacola, ao finalizar a compra enviar uma mensagem personalizada via whatsapp solicitando os produtos da sacola, manter mensagem bem formatada e com os dados do que o cliente selecionou, o preço disponibilizado no site e a quantidade por gramas de cada item (o usuario deve fornecer as gramas desejadas de cada produto no carrinho antes de confirmar a compra)
