@@ -1,6 +1,8 @@
 # BOCATTO
 
 <h2>A FAZER</h2>
+ Remover hover dos 3 protudos/imagem do index. E tornar clicavel.
+
 - [ ] ICONE precisa aparecer em mobile
 - [x] ADICIONAR HORARIO DE FUNCIONAMENTO NO FOOTER: SEG A SAB: 09:30 AS 12:00 14:30 AS 18:30
 - [x] Criar arquivo scrips.js
@@ -43,5 +45,6 @@ FINALIZAÇÃO:
 
 CONTEXTO:
 *'PREÇO DIFERENCIADO PARA EVENTOS' (adicionado em kits)
+
 
 
