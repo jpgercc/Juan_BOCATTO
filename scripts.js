@@ -1,5 +1,5 @@
 // ============================
-// GLOBAL VARIABLES
+// 'GLOBAL' VARIABLES (currentCategory SÓ EXISTE EM PRODUTOSHTML)
 // ============================
 let currentSlide = 0;
 let currentCategory = 'todos';
