@@ -20,6 +20,7 @@
 PERGUNTAR:
 
 - [ ] QUER INCLUIR UMA FOTO DA FACHADA OU DA LOJA NO SOBRE MIM OU MANTER APENAS A LOGO?
+- [ ] Já considerou contratar um fotografo para as fotos?
 
 
 
@@ -45,6 +46,7 @@ FINALIZAÇÃO:
 
 CONTEXTO:
 *'PREÇO DIFERENCIADO PARA EVENTOS' (adicionado em kits)
+
 
 
 
