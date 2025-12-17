@@ -3,282 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bocatto - Confeitaria de Luxo</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+    <title>Bocatto - Em Desenvolvimento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fff1f2 0%, #fafaf9 100%);
+            color: #292524;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .logo-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            height: 80px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .text-content {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            color: #881337;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-weight: 300;
+            color: #881337; 
+            /*color: #78716c; */
+            letter-spacing: 0.05em;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            color: #881337;
+            /*color: #78716c;*/
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .contact-info strong {
+            color: #881337;
+        }
+
+        .contact-info a {
+            color: #881337;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #9f1239;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #fecdd3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            border-color: #881337;
+            background: #881337;
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #881337;
+            transition: stroke 0.3s;
+        }
+
+        .social-icon:hover svg {
+            stroke: white;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1.5rem; }
+            .logo { height: 50px; }
+            .logo-container { margin-bottom: 2rem; }
+        }
+    </style>
 </head>
-<body class="body">
-    <!-- Header with Navigation -->
-    <header id="navbar" class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="./assets/LOGO-WIDE-BLK-MINIMALIST.png" alt="Bocatto Logo">
-                <span class="logo-reg">&reg;</span>
-            </a>
-            <nav class="nav-links-wrapper">
-                <ul class="nav-links">
-                    <li><a href="produtos.html">MENU</a></li>
-                    <li><a href="#servicos">SERVIÇOS</a></li>
-                    <li><a href="eventos.html">EVENTOS</a></li>
-                    <li><a href="#sobrenos">SOBRE NÓS</a></li>
-                </ul>
-            </nav>
-            <div class="nav-icons">
-                <div class="cart-icon-wrapper" onclick="toggleCart()">
-                    <svg class="cart-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-                    </svg>
-                    <span class="cart-badge" id="cartBadge">0</span>
-                </div>
-                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-                    <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
+<body>
+    <div class="logo-container">
+        <div class="logo">
+            <img src="./assets/LOGO-WIDE-BLK-MINIMALIST.png" alt="Bocatto Logo">
         </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul>
-            <li><a href="produtos.html" onclick="toggleMenu()">MENU</a></li>
-            <li><a href="#servicos" onclick="toggleMenu()">SERVIÇOS</a></li>
-            <li><a href="eventos.html" onclick="toggleMenu()">EVENTOS</a></li>
-            <li><a href="#sobrenos" onclick="toggleMenu()">SOBRE NÓS</a></li>
-        </ul>
     </div>
 
-    <!-- Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-modal-content">
-            <div class="cart-modal-header">
-                <h2>Meu Carrinho</h2>
-                <button class="cart-close-btn" onclick="toggleCart()">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items will be inserted here -->
-            </div>
-            
-            <div class="cart-empty" id="cartEmpty">
+    <div class="content-wrapper">
+        <div class="text-content">
+            <h1>Estamos Preparando um Site Delicioso para Você</h1>
+            <p class="subtitle">
+                Assim como nossas receitas exclusivas estamos trabalhando com cuidado e dedicação para criar uma experiência digital única. Em breve, você poderá explorar todo o nosso menu e fazer pedidos online.
+            </p>
+        </div>
+
+        <div class="contact-info">
+            <p><strong>Enquanto isso, nos visite:</strong></p>
+            <p>Rua Conde de Porto Alegre, 376 - Santana do Livramento, RS</p>
+            <p>Segunda a Sábado: 09:30 - 12:00 | 14:30 - 18:30</p>
+            <p><a href="tel:555532421628">55 3242-1628</a> | <a href="mailto:bocattoconfeitaria@gmail.com">bocattoconfeitaria@gmail.com</a></p>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://wa.me/555532421628" class="social-icon" aria-label="WhatsApp">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                 </svg>
-                <p>Seu carrinho está vazio</p>
-            </div>
-            
-            <div class="cart-footer" id="cartFooter">
-                <div class="cart-total">
-                    <span>Total Estimado:</span>
-                    <span id="cartTotalPrice">R$ 0,00</span>
-                </div>
-                <button class="cart-checkout-btn" onclick="finalizarCompra()">
-                    FINALIZAR COMPRA
-                </button>
-            </div>
+            </a>
+            <a href="mailto:bocattoconfeitaria@gmail.com" class="social-icon" aria-label="Email">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </a>
         </div>
     </div>
-    <main>
-        <!-- Hero Carousel -->
-        <section class="hero" aria-label="Hero carousel">
-            <div class="hero-slide active">
-                <img src="https://images.unsplash.com/photo-1560801619-01d71da0f70c?w=1600&q=90" alt="Gelatos">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=1600&q=90" alt="Pastries">
-                <div class="hero-overlay"></div>
-            </div>
-            <div class="hero-slide">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1600&q=90" alt="Salgados">
-                <div class="hero-overlay"></div>
-            </div>
-            
-            <div class="hero-content">
-                <h1>A Arte da Confeitaria</h1>
-                <p>Desde 1986, criando um bocado momentos deliciosos</p>
-                <a href="produtos.html" class="btn-primary">MENU</a>
-            </div>
-
-            <div class="carousel-indicators" role="tablist" aria-label="Carousel indicators">
-                <button class="indicator active" onclick="goToSlide(0)" role="tab" aria-selected="true"></button>
-                <button class="indicator" onclick="goToSlide(1)" role="tab" aria-selected="false"></button>
-                <button class="indicator" onclick="goToSlide(2)" role="tab" aria-selected="false"></button>
-            </div>
-        </section>
-
-        <!-- Menu Section -->
-        <section class="section" id="menu">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Nossas Criações</h2>
-                    <div class="divider"></div>
-                    <p>Cada criação é uma obra-prima, elaborada com ingredientes nobres e técnicas familiares.</p>
-                </div>
-
-                <div class="grid">
-                    <div class="collection-card">
-                        <div class="collection-image">
-                            <img src="https://images.unsplash.com/photo-1602532769069-0e856a643e7d?w=800&q=90"" alt="Macarons">
-                            <div class="collection-overlay">
-                                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3>Gelatos</h3>
-                        <p>Se delicie com nossos gelatos refrescantes</p>
-                    </div>
-
-                    <div class="collection-card">
-                        <div class="collection-image">
-                            <img src="https://i.pinimg.com/736x/9d/c8/ca/9dc8ca7d65afab46d418932b8456ed02.jpg" alt="Chocolates">
-                            <div class="collection-overlay">
-                                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3>Tortas Artesanais</h3>
-                        <p>Criações refinadas de diversos sabores </p>
-                    </div>
-
-                    <div class="collection-card">
-                        <div class="collection-image">
-                            <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877" alt="Padaria">
-                            <div class="collection-overlay">
-                                <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3>Salgados e Panificados</h3>
-                        <p>Pães e salgados da melhor qualidade</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section class="section experience" id="salon">
-            <div class="container">
-                <div class="experience-grid">
-                    <div class="experience-image">
-                        <img src="./assets/LOGO-ROUND-BRONW.jpeg" alt="Bocatto Logo">
-                    </div>
-                    <div class="experience-content">
-                        <h2>A Experiência Bocatto</h2>
-                        <div class="divider" style="margin: 0 0 2rem 0;"></div>
-                        <p>Mais que uma confeitaria, Bocatto é um refúgio de gastronomia e elegância. Nosso salão de chá oferece uma experiência sensorial incomparável, onde cada detalhe foi pensado para encantar os paladares mais exigentes.</p>
-                        <p>Da decoração acolhedora às porcelanas finas, cada elemento celebra a nossa tradição familiar de criar momentos inesquecíveis.</p>
-                        <button class="btn-secondary">ENTRE EM CONTATO</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section class="section services" id="servicos">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Serviços Exclusivos</h2>
-                    <div class="divider"></div>
-                </div>
-
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/>
-                            </svg>
-                        </div>
-                        <h3>Kits Tradicionais</h3>
-                        <p>Caixas personalizadas para celebrar momentos especiais com distinção</p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                            </svg>
-                        </div>
-                        <h3>Valores Especiais para Eventos</h3>
-                        <p>Condições especiais para tornar seus eventos ainda mais doces e memoráveis</p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                            </svg>
-                        </div>
-                        <h3>Tele-Entrega</h3>
-                        <p>Levamos a excelência Bocatto para o local de sua escolha</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Heritage Banner -->
-        <section class="heritage" id="sobrenos">
-            <img src="https://images.unsplash.com/photo-1597528662465-55ece5734101?w=1600&q=90" alt="Baker Table">
-            <div class="heritage-overlay">
-                <div class="heritage-content">
-                    <p>DESDE 1986</p>
-                    <h2>Tradição e Excelência</h2>
-                    <p>Bocatto representa o encontro entre tradição familiar e inovação contemporânea, mantendo viva a verdadeira arte da confeitaria.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-section">
-                <!--<h3>BOsCATTO</h3>-->
-                <a href="index.html" class="logo">
-                    <img src="./assets/LOGO-WIDE-WT-MINIMALIST.png" alt="Bocatto Logo">
-                    <!--<span class="logo-re-wt">&reg;</span> REGISTRO JA NOTIFICADO NO HEADER -->
-                </a>
-                <p>A arte e a tradição da confeitaria.</p>
-            </div>
-
-            <div class="footer-section">
-                <h4>SERVIÇOS</h4>
-                <ul>
-                    <li><a href="./eventos.html">Eventos</a></li>
-                    <li><a href="https://wa.me/5532421628?text=Ol%C3%A1!%20Tudo%20bem%3F%20Gostaria%20de%20saber%20como%20funciona%20o%20servi%C3%A7o%20de%20entregas%20da%20Bocatto">Entregas</a></li>
-                    <li><a href="./produtos.html">Kits Presentes e Festas</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>HORÁRIO</h4>
-                <ul>
-                    <li>Segunda a sábado</li>
-                    <li>09:30 - 12:00</li>
-                    <li>14:30 - 18:30</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>CONTATO</h4>
-                <ul>
-                    <li>Rua Conde de Porto Alegre, 376</li>
-                    <li>Santana do Livramento - RS</li>
-                    <li>55 3242-1628</li>
-                    <li>bocattoconfeitaria@gmail.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 BOCATTO. Todos direitos reservados.</p>
-        </div>
-    </footer>
-    <script src="./scripts.js"></script>
 </body>
 </html>
