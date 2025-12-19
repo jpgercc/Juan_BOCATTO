@@ -2,6 +2,7 @@
 
 <a href='https://juan-bocatto.vercel.app/'>VERCEL SERVER</a>
 Juan comprou o dominio: confeitariabocatto.com.br
+
 Verdadeiro index está na pasta .TEMP
 
 <h2>A FAZER</h2>
@@ -50,6 +51,7 @@ FINALIZAÇÃO:
 
 CONTEXTO:
 *'PREÇO DIFERENCIADO PARA EVENTOS' (adicionado em kits)
+
 
 
 
