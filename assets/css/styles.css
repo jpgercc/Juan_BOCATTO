@@ -519,6 +519,7 @@ html {
     gap: 2rem;
 }
 .collection-card {
+    text-decoration: none;
     cursor: pointer;
 }
 .collection-image {
